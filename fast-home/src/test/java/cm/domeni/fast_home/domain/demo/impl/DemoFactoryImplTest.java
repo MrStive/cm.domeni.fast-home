@@ -22,29 +22,27 @@ class DemoFactoryImplTest {
 
   @Test
   void createTest() {
-      //Given
+    // Given
     String id = UUID.randomUUID().toString();
     String name = "name";
     DemoData demoData = DemoData.builder().id(id).name(name).build();
-      Demo expected = mock(Demo.class);
-      given(demoRepository.save(any())).willReturn(expected);
+    Demo expected = mock(Demo.class);
+    given(demoRepository.save(any())).willReturn(expected);
 
-    //When
+    // When
     Demo result = objectUnderTest.create(demoData);
 
-    //Then
+    // Then
     verify(demoRepository)
         .save(
             assertArg(
                 demo ->
                     assertThat(demo)
                         .usingRecursiveComparison()
-                            .ignoringFieldsOfTypes()
-                            .ignoringFieldsOfTypes(DemoId.class)
+                        .ignoringFieldsOfTypes()
+                        .ignoringFieldsOfTypes(DemoId.class)
                         .isEqualTo(
-                            Demo.builder()
-                                .name(DemoName.builder().value(name).build())
-                                .build())));
+                            Demo.builder().name(DemoName.builder().value(name).build()).build())));
     assertThat(result).isNotNull().isEqualTo(expected);
   }
 }

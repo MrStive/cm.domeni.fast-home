@@ -19,12 +19,9 @@
         <module name="fast-home.test" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="21" />
   </component>
   <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="fast-home" options="-parameters" />
-      <module name="fast-home.main" options="-parameters" />
-      <module name="fast-home.test" options="-parameters" />
-    </option>
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-parameters" />
   </component>
 </project>
