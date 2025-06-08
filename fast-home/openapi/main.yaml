@@ -55,6 +55,62 @@ paths:
           description: "Invalid input"
         "401":
           description: "Unauthorized"
+  /Building:
+    post:
+      tags:
+      - "Building"
+      summary: "Create a new Building"
+      description: "Creates a new Building with the provided data"
+      operationId: "createBuilding"
+      security:
+      - bearerAuth: []
+      requestBody:
+        description: "Building object to be created"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuildingDTO"
+      responses:
+        "201":
+          description: "Building created successfully"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                format: "uuid"
+        "400":
+          description: "Invalid input"
+        "401":
+          description: "Unauthorized"
+  /user:
+    post:
+      tags:
+      - "User"
+      summary: "Create a new User"
+      description: "Creates a new User with the provided data"
+      operationId: "createUser"
+      security:
+      - bearerAuth: []
+      requestBody:
+        description: "User object to be created"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDTO"
+      responses:
+        "201":
+          description: "User created successfully"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                format: "uuid"
+        "400":
+          description: "Invalid input"
+        "401":
+          description: "Unauthorized"
 components:
   securitySchemes:
     bearerAuth:
@@ -70,3 +126,85 @@ components:
           format: "uuid"
         name:
           type: "string"
+    UserDTO:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+          description: "identifier of user"
+        firstName:
+          type: "string"
+          description: "first name of the user"
+        lastName:
+          type: "string"
+          description: "last name of the user"
+        email:
+          type: "string"
+          format: "email"
+          description: "email address of the user"
+        phoneNumber:
+          type: "string"
+          description: "phone number of the user"
+    BuildingDTO:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+          description: "identify of building"
+        name:
+          type: "string"
+        address:
+          type: "object"
+          properties:
+            street:
+              type: "string"
+            city:
+              type: "string"
+            zipCode:
+              type: "string"
+        location:
+          type: "object"
+          properties:
+            latitude:
+              type: "number"
+              format: "double"
+              description: "latitude coordinate of the building"
+            longitude:
+              type: "number"
+              format: "double"
+              description: "longitude coordinate of the building"
+        totalArea:
+          type: "number"
+          format: "double"
+          description: "total area of the building in square meters"
+        floors:
+          type: "integer"
+          description: "number of floors in the building"
+        ownerId:
+          type: "string"
+          format: "uuid"
+          description: "identifier of the building owner"
+        reference:
+          type: "string"
+          description: "reference code of the building"
+        amenities:
+          type: "array"
+          description: "list of amenities available in the building"
+          items:
+            type: "string"
+            enum:
+            - "PARKING"
+            - "ELEVATOR"
+            - "SWIMMING_POOL"
+            - "GYM"
+            - "SECURITY"
+            - "AIR_CONDITIONING"
+            - "HEATING"
+            - "GARDEN"
+            - "TERRACE"
+            - "BALCONY"
+            - "WIFI"
+            - "LAUNDRY"
+            - "STORAGE"

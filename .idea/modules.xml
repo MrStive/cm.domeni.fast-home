@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cm.domeni.fast-home.iml" filepath="$PROJECT_DIR$/.idea/cm.domeni.fast-home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fast-home.iml" filepath="$PROJECT_DIR$/.idea/modules/fast-home.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fast-home.main.iml" filepath="$PROJECT_DIR$/.idea/modules/fast-home.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fast-home.test.iml" filepath="$PROJECT_DIR$/.idea/modules/fast-home.test.iml" />
     </modules>

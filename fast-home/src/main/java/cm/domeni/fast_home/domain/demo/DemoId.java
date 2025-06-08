@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Embeddable
