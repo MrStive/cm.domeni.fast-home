@@ -111,6 +111,34 @@ paths:
           description: "Invalid input"
         "401":
           description: "Unauthorized"
+  /Building/{id}/residential-unit:
+    post:
+      tags:
+      - "Building"
+      summary: "Create a new residential unit"
+      description: "Creates a new residential unit with the provided data"
+      operationId: "createResidentialUnit"
+      security:
+      - bearerAuth: []
+      requestBody:
+        description: "residential unit object to be created"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResidentialUnitDTO"
+      responses:
+        "201":
+          description: "User created successfully"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                format: "uuid"
+        "400":
+          description: "Invalid input"
+        "401":
+          description: "Unauthorized"
 components:
   securitySchemes:
     bearerAuth:
@@ -208,3 +236,28 @@ components:
             - "WIFI"
             - "LAUNDRY"
             - "STORAGE"
+    MoneyDTO:
+      type: "object"
+      properties:
+        value:
+          type: "number"
+          format: "currency"
+          description: "The value of the represented money instance"
+        currency:
+          type: "string"
+          description: "The currency code (from ISO 4217) of the represented money\
+            \ instance"
+    ResidentialUnitDTO:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+          description: "identifier of residential unit"
+        areal:
+          type: "number"
+          format: "double"
+        isOccupied:
+          type: "boolean"
+        price:
+          $ref: "#/components/schemas/MoneyDTO"
